@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+
+    <style>
+    body{
+        width: 100%;
+      }
+      p{
+        font-size: 20px;
+        font-family: Georgia, 'Times New Roman', Times, serif
+      }
+      h6{
+      font-size: 14px;
+      opacity: 70%;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-weight: 300;
+      }
+
+      h5{
+      font-size: 16px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-weight: 300;
+      }
+
+      h2{
+        font-size: 25px;
+        font-weight: 400;
+        font-family: Georgia, 'Times New Roman', Times, serif
+      }
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #headerbar{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 80px;
+        background-color: #2392F1;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+        z-index: 999;
+        position: sticky;
+        top: 0;
+        left: 0;
+      }
+      #navbar{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #navbar li{
+        list-style: none;
+        padding: 0 20px;
+        position: relative;
+      }
+
+      #navbar li a{
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        transition: 0.3s ease;
+      }
+
+      .proimg{
+        width: 100%;
+        height: 70px;
+        border-radius: 50%;
+      }
+
+      .span{
+        color: white;
+      }
+      /*submit img*/
+      #decor{
+        display: flex;
+        position: relative;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .submitimg{
+        height: 200px;
+        width: 70%;
+        margin: 20px auto;
+      }
+      #decor .marquee{
+        background-color: #2392F1;
+        display: block;
+        border-radius: 10px;
+        margin: auto;
+        width: 70%;
+      }
+
+      marquee{
+        color: white;
+        font-size: 20px;
+        padding: 10px;
+      }
+
+      #body{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.06);
+        width: 70%;
+        margin: 20px auto;
+        padding: 10px 12px;
+        background-color: #F4F5F5;
+      }
+
+      #body .loginout, .smvl{
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 5px;
+        display: block;
+        font-size: 16px;
+        margin: 20px auto;
+        box-shadow: 15px 5px 20px rgba(0,0,0,0.06);
+        cursor: pointer;
+      }
+
+      .task{
+        background-color: #2392F1;
+        width: 90%;
+        color: white;
+        border-radius: 10px;
+        margin: auto;
+        text-align: center;
+        padding: 3px;
+      }
+
+      .line{
+        margin: 20px;
+      }
+
+
+
+      .production{
+        font-size: 40px;
+        color: red;
+        font-weight: 500;
+      }
+
+      #form1, #describeinfo {
+        float: left;
+        width: 50%;
+        padding: 0 40px;
+        margin-bottom: 20px;
+      }
+
+      /* Clear floats after the columns */
+      #container:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      #container #form1 input{
+        margin: 10px;
+      }
+
+      #describetask{
+        padding: 0 40px;
+        overflow: scroll;
+        display: block;
+      }
+    #describetask .describeform #taskdescribe1, #taskdescribe2{
+        display: flex;
+        flex:1;
+      }
+      #lastlogin{
+        margin-left: 40px;
+      }
+  </style>
+  </head>
+  <body>
+   <section id="decor"> 
+    <img class="submitimg" src="http://www.wilkinsonpublishing.com.au/wp-content//uploads/2021/10/Stack-of-Books-illust6.png">
+    <div class="marquee">
+      <marquee>Please make sure you update your workflow name, if you are not sure which workflow to select, please reach out to your team lead.</marquee>
+    </div>
+  </section>
+  <!---resgister form-->
+  <form id="tdtform" onsubmit="handleFormSubmit(this)">
+    <section id="body"> 
+      <div class="line">
+          <h2>Your Information is: <span class="production"> Your Information </span> </h2>
+        </div>
+        <div>
+          <div id="describeinfo">
+              <h6><label for="employee"> Your Name </label></h6>
+              <select class="form-control" id="employee" name="employee"></select>
+              <h6><label for="location"> Your Location </label></h6>
+              <select class="form-control" id="location" name="location"></select>
+          </div>
+          <div id="describeinfo">
+              <h6><label for="position"> Your Position </label></h6>
+              <select class="form-control" id="position" name="position"></select>
+              <h6><label for="shift"> Your Shift </label></h6>
+              <select class="form-control" id="shift" name="shift"></select>
+          </div>
+        </div>
+      <div class="line">
+        <hr>
+        <h2> Your Department is: <span class="production"> Your Department </span> </h2>
+        <hr>
+      </div>
+      <div id="container"> 
+        <div id="form1">
+            <input type="radio" id="working1" name="working1" value="Product Development">
+            <label for="working1"> Product Development</label><br>
+            <input type="radio" id="working2" name="working1" value="HR Team">
+            <label for="working2"> HR Team </label><br>
+            <input type="radio" id="working3" name="working1" value="Marketing">
+            <label for="working3"> Marketing </label><br>
+            <input type="radio" id="working4" name="working1" value="Client Management">
+            <label for="working4"> Client Management </label><br>
+            <input type="radio" id="working5" name="working1" value="Developer Team">
+            <label for="working5"> Developer Team </label><br>
+            <input type="radio" id="working6" name="working1" value="Finance Team">
+            <label for="working6"> Finance Team </label><br>
+            <input type="radio" id="working7" name="working1" value="UI/UX/Designer">
+            <label for="working7"> UI/UX/Designer </label><br>
+              <input type="radio" id="working8" name="working1" value="Operations Management">
+            <label for="working8"> Operations Management </label><br>
+            <input type="radio" id="working9" name="working1" value="Others (MUST specify in Task Description)">
+            <label for="working9"> Others (MUST specify in Task Description) </label><br>
+        </div>
+        <div id="form1">
+            <input type="radio" id="working1" name="working1" value="Sales Team">
+            <label for="working1"> Sales Team </label><br>
+            <input type="radio" id="working2" name="working1" value="Purchasing Team">
+            <label for="working2"> Purchasing Team </label><br>
+            <input type="radio" id="working3" name="working1" value="Research">
+            <label for="working3"> Research/ Data/Risk Management </label><br>
+            <input type="radio" id="working4" name="working1" value="Accounting">
+            <label for="working4"> Accounting </label><br>
+            <input type="radio" id="working5" name="working1" value="Administrative">
+            <label for="working5"> Administrative </label><br>
+            <input type="radio" id="working6" name="working1" value="Customer Service">
+            <label for="working6"> Customer Service </label><br>
+            <input type="radio" id="working7" name="working1" value="PR Team">
+            <label for="working7"> PR Team </label><br>
+            <input type="radio" id="working8" name="working1" value="Reporting / Documentation">
+            <label for="working8"> Reporting / Documentation </label><br>
+            <input type="radio" id="working9" name="working1" value="Legal Team">
+            <label for="working9"> Legal Team </label><br>   
+        </div>
+      </div>
+      <div class="task">
+        <p> Task/Issue/Productivity Description </p>
+      </div>
+      <div class="line">
+        <h2>Your Tasks Completed is </h2>
+      </div>
+      <div id="describetask">
+        <div class="describeform">
+          <h6><label for="taskdescribe1">Productivity number </label></h6>
+          <textarea id="taskdescribe1" name="taskdescribe1" rows="2" cols="108%"></textarea>
+          <h6><label for="taskdescribe2">Description if any (e.g screenshot or comment) </label></h6>
+          <textarea id="taskdescribe2" name="taskdescribe2" rows="2" cols="108%"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="smvl">SUBMIT THE TOTAL VOLUME</button>
+      <div id="output"></div>
+    </section>
+  </form>
+    <script>
+
+    let url="https://script.google.com/a/macros/google.com/s/AKfycbzV9iwm4OCwuOve0Dm7WAATW9MwjmaSWGZ_MIkPT2hM9GH9g1y9t_4y7nmawj9A3JQ7/exec";
+    let form=document.querySelector("#tdtform");
+    let submit=document.querySelector(".smvl");
+    let volume=document.querySelector("#taskdescribe1");
+    let screenshot=document.querySelector("#taskdescribe2");
+    form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            submit.value = "submitting.."
+            fetch(url, {
+                    method: "POST",
+                    body: new FormData(form)
+                })
+                .then(res => res.text())
+                .then(data => {
+                    message.innerHTML = data;
+                    submit.value = "submit"
+ 
+                })
+                .catch(err => {
+                    message.innerHTML = err;
+                    submit.value = "submit"
+                })
+    })
+
+    function preventFormSubmit(){
+      var forms=document.querySelectorAll('tdtform');
+      for (var i=0;i<forms.length;i++){
+        forms[i].addEventListener('submit',function(event){
+          event.preventDefault();
+        });
+      }
+    };
+
+  document.addEventListener('DOMContentLoaded',preventFormSubmit);
+
+  function handleFormSubmit(formObject){
+    google.script.run.processForm(formObject);
+    document.getElementById('tdtform').reset();
+  }   
+
+
+
+
+
+
+     $( document ).ready(function() {
+      getEmployees();
+      getLocation();
+      getPosition();
+      getShift();
+    });
+    
+    function getEmployees() {
+    
+      google.script.run.withSuccessHandler(function(ar) {
+      var employeeSelect = document.getElementById("employee");
+      console.log(ar);
+      
+      let option = document.createElement("option");
+      option.value = "";
+      option.text = "";
+      employeeSelect.appendChild(option);
+      
+      ar.forEach(function(item, index) {    
+        let option = document.createElement("option");
+        var employee = item[0];
+        option.value = item[0];
+        option.text = item[0];
+        employeeSelect.appendChild(option);    
+    });
+    }).getEmployees();
+    
+    };
+
+    function getLocation() {
+    
+      google.script.run.withSuccessHandler(function(ar) {
+      var locationSelect = document.getElementById("location");
+      console.log(ar);
+      
+      let option = document.createElement("option");
+      option.value = "";
+      option.text = "";
+      locationSelect.appendChild(option);
+      
+      ar.forEach(function(item, index) {    
+        let option = document.createElement("option");
+        var location = item[0];
+        option.value = item[0];
+        option.text = item[0];
+        locationSelect.appendChild(option);    
+    });
+    }).getLocation();
+    
+    };
+
+    function getPosition() {
+    
+      google.script.run.withSuccessHandler(function(ar) {
+      var positionSelect = document.getElementById("position");
+      console.log(ar);
+      
+      let option = document.createElement("option");
+      option.value = "";
+      option.text = "";
+      positionSelect.appendChild(option);
+      
+      ar.forEach(function(item, index) {    
+        let option = document.createElement("option");
+        var position = item[0];
+        option.value = item[0];
+        option.text = item[0];
+        positionSelect.appendChild(option);    
+    });
+    }).getPosition();
+    
+    };
+
+    function getShift() {
+    
+      google.script.run.withSuccessHandler(function(ar) {
+      var shiftSelect = document.getElementById("shift");
+      console.log(ar);
+      
+      let option = document.createElement("option");
+      option.value = "";
+      option.text = "";
+      shiftSelect.appendChild(option);
+      
+      ar.forEach(function(item, index) {    
+        let option = document.createElement("option");
+        var shift = item[0];
+        option.value = item[0];
+        option.text = item[0];
+        shiftSelect.appendChild(option);    
+    });
+    }).getShift();
+    
+    };
+
+
+  
+    </script>
+  </body>
+</html>
